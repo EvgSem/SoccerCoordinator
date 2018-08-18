@@ -64,16 +64,12 @@ for player in players {
 var theLeague: [[String: Any]] = []
 
 func split(players: [[String: Any]]) {
- 
-    for i in 1..<players.count {
-        var leaguePlayer = players[i-1]
-        if i % 3 == 0 {
-            leaguePlayer["team"] = "Dragons"
-        } else if i % 2 == 0 {
-            leaguePlayer["team"] = "Sharks"
-        } else {
-            leaguePlayer["team"] = "Raptors"
-        }
+    let teams = ["Dragons", "Sharks", "Raptors"]
+    
+    for i in 0..<players.count {
+        var leaguePlayer = players[i]
+        let teamIndex = i % teams.count
+        leaguePlayer["team"] = teams[teamIndex]
         theLeague.append(leaguePlayer)
     }
 }
